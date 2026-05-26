@@ -1,40 +1,30 @@
 import SectionHeader from "./SectionHeader";
 import ButtonLink from "./ButtonLink";
-import ImageGrid from "./ImageGrid";
+import ImageCarousel from "./ImageCarousel";
 
 const New = () => {
   const images = [
-    "/home/1.jpg",
-    "/home/2.png",
-    "/home/3.png",
-    "/home/4.png",
-    "/home/5.png",
-    "/home/6.png",
-    "/home/7.png",
-    "/home/8.png",
-    "/home/9.png",
+    { src: "/recruit/recruit_1.jpg", alt: "Project 1" },
+    { src: "/recruit/recruit_2.jpg", alt: "Project 2" },
+    { src: "/recruit/recruit_3.jpg", alt: "Project 3" },
   ];
 
   return (
     <section className="px-6 py-12 text-white">
       <div className="max-w-4xl mx-auto text-center">
-        <SectionHeader
-          title="Join Nu.メタ創"
-          description={`メタ創の活動は、基本的に Discord 上で行われています。
-また昨年度は、IVRC2025 や Vket など、
-メタバース上のイベントや現地展示イベントにも参加しました。`}
-        />
+        <SectionHeader title="Join nu.digital" description={``} />
 
-        <ImageGrid images={images} altPrefix="メタ創の活動風景" />
+        <div className="mt-10">
+          <ImageCarousel images={images} />
+        </div>
 
-        <p className="text-lg leading-relaxed mb-8">
-          メタ創では、日本大学の学生限定となりますが、
-          デザイナーやエンジニアを募集しています。
-          <br />
-          興味のある方は、公式 X の DM までご連絡ください。
-        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-10">
+          <ButtonLink href="https://x.com/nuMetasou">公式Xはこちら</ButtonLink>
 
-        <ButtonLink href="https://x.com/nuMetasou">公式Xはこちら</ButtonLink>
+          <ButtonLink href="https://docs.google.com/forms/d/1XyNhN6aowMRva62H6plLdzpJDn9_OE4IUh69zu3vsrY/edit">
+            募集フォームはこちら
+          </ButtonLink>
+        </div>
       </div>
     </section>
   );

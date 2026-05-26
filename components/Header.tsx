@@ -35,7 +35,7 @@ const Header = () => {
               <div className="absolute inset-0 bg-cyan-500/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
             <span className="font-black text-xl tracking-tighter italic transition-colors duration-300 group-hover:text-cyan-400">
-              Nu.メタ創
+              nu.digital
             </span>
           </Link>
         </div>

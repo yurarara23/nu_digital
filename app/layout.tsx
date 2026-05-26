@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/components/Header"; 
-import Footer from "@/components/Footer"; 
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +26,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
-        <Footer /> 
+        <Footer />
       </body>
     </html>
   );
@@ -34,26 +34,26 @@ export default function RootLayout({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nu-meta.vercel.app"), //追加
-  title: "Nu.メタ創",
-  description: "Nu.メタ創の公式サイト",
+  title: "nu.digital",
+  description: "nu.digitalの公式サイト",
   openGraph: {
-    title: "Nu.メタ創",
-    description: "Nu.メタ創の公式サイト",
+    title: "nu.digital",
+    description: "nu.digitalの公式サイト",
     url: "https://nu-meta.vercel.app/",
     images: [
       {
         url: "/ogp/member.png",
         width: 1200,
         height: 630,
-        alt: "Nu.メタ創",
+        alt: "nu.digital",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nu.メタ創",
-    description: "Nu.メタ創の公式サイト",
+    title: "nu.digital",
+    description: "nu.digitalの公式サイト",
     images: ["/ogp/member.png"],
   },
 };

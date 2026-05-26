@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { FaTimes, FaHome, FaPenNib, FaUsers } from "react-icons/fa";
+import { FaTimes, FaHome, FaPenNib } from "react-icons/fa";
 
 export default function Sidebar({
   open,
@@ -12,7 +12,6 @@ export default function Sidebar({
   const menuItems = [
     { name: "Home", href: "/", icon: <FaHome /> },
     { name: "Blog", href: "/blog", icon: <FaPenNib /> },
-    { name: "Member", href: "/member", icon: <FaUsers /> },
   ];
 
   return (

@@ -4,7 +4,7 @@ export default function TermsPage() {
   return (
     <>
       <Head>
-        <title>利用規約 | Nu.メタ創</title>
+        <title>利用規約 | nu.digital</title>
       </Head>
 
       <main className="min-h-screen bg-black text-white py-20 px-6">
@@ -24,7 +24,7 @@ export default function TermsPage() {
           prose-li:text-gray-400"
         >
           <p>
-            この利用規約（以下、「本規約」といいます。）は、Nu.メタ創（以下、「当サイト」といいます。）がこのウェブサイト上で提供するサービス（以下、「本サービス」といいます。）の利用条件を定めるものです。
+            この利用規約（以下、「本規約」といいます。）は、nu.digital（以下、「当サイト」といいます。）がこのウェブサイト上で提供するサービス（以下、「本サービス」といいます。）の利用条件を定めるものです。
           </p>
 
           <h2>第1条（適用）</h2>
@@ -53,7 +53,7 @@ export default function TermsPage() {
 
           <footer className="mt-20 pt-8 border-t border-white/5">
             <p className="text-sm font-mono tracking-widest text-gray-500">
-              LAST UPDATED: 2026.02.21
+              LAST UPDATED: 2026.05.25
             </p>
           </footer>
         </article>
