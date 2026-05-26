@@ -22,7 +22,7 @@ const Project = () => {
       <div className="relative z-20 max-w-6xl mx-auto text-center">
         <SectionHeader
           title="Project"
-          description={`nu.digital では、メンバーそれぞれの得意分野を掛け合わせ、
+          description={`nu_digital では、メンバーそれぞれの得意分野を掛け合わせ、
 ゲーム制作や VRChat 向けワールド制作を中心に、モデリング・デザイン・サウンド・Web 開発など幅広い制作活動を行っています。
 また、技術書制作、イベント企画、広報、展示ブース制作、団体運営など、リアルとデジタルの両面から創作活動に取り組んでいます。`}
         />

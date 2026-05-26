@@ -25,7 +25,7 @@ const AboutUs = () => {
       <div className="relative z-20 max-w-6xl mx-auto text-center">
         <SectionHeader
           title="About Us"
-          description={`nu.digitalは、VRC（VRChat）向けのワールドやギミックの制作をはじめ、
+          description={`nu_digitalは、VRC（VRChat）向けのワールドやギミックの制作をはじめ、
 
 3Dモデル制作やWeb開発など、デジタル分野に特化した創作活動を行うプロジェクト団体です。`}
         />

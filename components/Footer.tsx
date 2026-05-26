@@ -4,20 +4,16 @@ import { FaGithub } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="relative bg-black text-white py-12 px-6 mt-20 border-t border-cyan-500/20">
-      {/* 装飾用の背景光（ごく薄く） */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
         {/* 左側：ブランドロゴとコピーライト */}
         <div className="flex flex-col items-center md:items-start gap-2">
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse shadow-[0_0_8px_#06b6d4]" />
             <span className="font-black tracking-tighter italic text-xl">
-              Nu.メタ創
+              nu_digital
             </span>
           </div>
           <p className="text-gray-500 text-xs tracking-widest uppercase">
-            &copy; 2026 Nu.Meta .
+            &copy; 2026 nu_digital .
           </p>
         </div>
 

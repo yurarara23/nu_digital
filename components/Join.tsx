@@ -12,7 +12,7 @@ const New = () => {
   return (
     <section className="px-6 py-12 text-white">
       <div className="max-w-4xl mx-auto text-center">
-        <SectionHeader title="Join nu.digital" description={``} />
+        <SectionHeader title="Join nu_digital" description={``} />
 
         <div className="mt-10">
           <ImageCarousel images={images} />

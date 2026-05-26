@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import Sidebar from "./Sidebar";
@@ -23,19 +22,8 @@ const Header = () => {
           </button>
 
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <Image
-                src="/logo.png"
-                alt="Logo"
-                width={32}
-                height={32}
-                className="group-hover:scale-110 transition-transform duration-300"
-              />
-              {/* ロゴの背後にうっすら Cyan の光を配置 */}
-              <div className="absolute inset-0 bg-cyan-500/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
             <span className="font-black text-xl tracking-tighter italic transition-colors duration-300 group-hover:text-cyan-400">
-              nu.digital
+              nu_digital
             </span>
           </Link>
         </div>
