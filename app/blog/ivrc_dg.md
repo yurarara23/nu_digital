@@ -1,7 +1,7 @@
 ---
 title: "IVRC審査員賞受賞"
 image: "/yurarara/IVRC/iv.png"
-author: "NU.メタ創"
+author: "nu_digital"
 date: "2025-11-02"
 ---
 
