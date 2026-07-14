@@ -6,19 +6,19 @@ export default function NewsPage() {
 
   return (
     <main className="mx-auto max-w-6xl px-5 py-14 md:py-20">
-      <header className="mb-10 rounded-[2rem] bg-white px-6 py-10 shadow-sm ring-1 ring-blue-100 md:px-10">
-        <p className="font-mono text-sm font-bold uppercase tracking-[0.3em] text-[var(--brand-blue)]">
+      <header className="mb-12 border-b-4 border-[var(--brand-blue)] pb-6">
+        <p className="font-mono text-sm font-black uppercase tracking-[0.3em] text-[var(--brand-blue)]">
           Information
         </p>
-        <h1 className="mt-3 text-5xl font-black tracking-tight text-[var(--brand-ink)]">
+        <h1 className="mt-3 text-6xl font-black uppercase leading-none tracking-tight text-[var(--brand-ink)] md:text-7xl">
           News
         </h1>
-        <p className="mt-4 max-w-2xl text-slate-600">
+        <p className="mt-5 max-w-2xl text-base font-bold leading-8 text-slate-600">
           サイト更新、募集、イベント告知など、nu_digitalからのお知らせを掲載します。
         </p>
       </header>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid min-w-0 gap-x-8 gap-y-10 md:grid-cols-2">
         {latestNews.map((post) => (
           <ContentCard key={post.slug} {...post} />
         ))}
