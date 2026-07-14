@@ -1,8 +1,8 @@
-import HeroSlider from "@/components/HeroSlider";
-import BlogSection from "@/components/BlogSection";
-import AboutUs from "@/components/AboutUs";
-import Project from "@/components/Project";
-import Join from "@/components/Join";
+import AboutSection from "@/components/home/AboutSection";
+import BlogSection from "@/components/home/BlogSection";
+import HeroSlider from "@/components/home/HeroSlider";
+import JoinSection from "@/components/home/JoinSection";
+import ProjectSection from "@/components/home/ProjectSection";
 
 export default function HomePage() {
   return (
@@ -13,16 +13,16 @@ export default function HomePage() {
         <BlogSection />
       </section>
 
-      <section id="AboutUs">
-        <AboutUs />
+      <section id="about">
+        <AboutSection />
       </section>
 
       <section id="project">
-        <Project />
+        <ProjectSection />
       </section>
 
       <section id="join">
-        <Join />
+        <JoinSection />
       </section>
     </main>
   );

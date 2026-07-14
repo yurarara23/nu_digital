@@ -3,11 +3,11 @@ type YouTubeEmbedProps = {
   title?: string;
 };
 
-const YouTubeEmbed = ({ videoId, title }: YouTubeEmbedProps) => {
+export default function YouTubeEmbed({ videoId, title }: YouTubeEmbedProps) {
   return (
-    <div className="w-full aspect-video mb-8">
+    <div className="mb-8 aspect-video w-full">
       <iframe
-        className="w-full h-full rounded-xl"
+        className="h-full w-full rounded-xl"
         src={`https://www.youtube.com/embed/${videoId}`}
         title={title ?? "YouTube video"}
         loading="lazy"
@@ -15,6 +15,4 @@ const YouTubeEmbed = ({ videoId, title }: YouTubeEmbedProps) => {
       />
     </div>
   );
-};
-
-export default YouTubeEmbed;
+}

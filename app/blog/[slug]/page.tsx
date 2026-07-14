@@ -1,68 +1,73 @@
-// app/blog/[slug]/page.tsx
-import { getMarkdown } from "@/lib/getMarkdown";
+import type { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import Image from "next/image";
-import type { Metadata } from "next";
+import { siteConfig } from "@/data/site";
+import { getAllPostSlugs, getPostBySlug } from "@/lib/markdown";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
+export function generateStaticParams() {
+  return getAllPostSlugs();
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = getMarkdown(slug);
+  const post = getPostBySlug(slug);
+
+  if (!post) {
+    return {};
+  }
+
+  const description = post.content.replace(/\s+/g, " ").slice(0, 120);
+  const imageUrl = post.image.startsWith("http")
+    ? post.image
+    : `${siteConfig.url}${post.image}`;
 
   return {
     title: post.title,
-    description: `${post.title} by ${post.author ?? "Unknown"}`,
+    description,
     openGraph: {
       title: post.title,
-      description: post.content.slice(0, 100) + "...",
-      url: `https://nu-meta.vercel.app/blog/${slug}`,
-      images: post.image
-        ? [
-            {
-              url: post.image.startsWith("http")
-                ? post.image
-                : `https://nu-meta.vercel.app${post.image}`,
-              width: 1200,
-              height: 630,
-              alt: post.title,
-            },
-          ]
-        : [],
+      description,
+      url: `${siteConfig.url}/blog/${slug}`,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.content.slice(0, 100) + "...",
-      images: post.image
-        ? [
-            post.image.startsWith("http")
-              ? post.image
-              : `https://nu-meta.vercel.app${post.image}`,
-          ]
-        : [],
+      description,
+      images: [imageUrl],
     },
   };
 }
 
-export default async function PostPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function PostPage({ params }: Props) {
   const { slug } = await params;
-  const post = getMarkdown(slug);
+  const post = getPostBySlug(slug);
+
+  if (!post) {
+    notFound();
+  }
+
+  const authorIcon = `/icons/${post.author}.png`;
 
   return (
-    <main className="min-h-screen bg-black text-white pb-20">
-      {/* ヒーロー画像セクション */}
+    <main className="min-h-screen bg-black pb-20 text-white">
       {post.image && (
-        <div className="relative w-full h-[40vh] md:h-[60vh] overflow-hidden">
+        <div className="relative h-[40vh] w-full overflow-hidden md:h-[60vh]">
           <Image
             src={post.image}
             alt={post.title}
@@ -70,65 +75,53 @@ export default async function PostPage({
             className="object-cover"
             priority
           />
-          {/* 下部へのグラデーションで見やすく */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
         </div>
       )}
 
-      <div className="max-w-4xl mx-auto px-6 -mt-20 relative z-10">
-        {/* 記事ヘッダー */}
-        <header className="bg-gray-900/60 backdrop-blur-xl p-8 md:p-12 border border-white/10 shadow-2xl mb-12">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="w-12 h-[2px] bg-cyan-500"></span>
-            <span className="text-cyan-400 font-mono text-sm tracking-widest uppercase">
+      <div className="relative z-10 mx-auto -mt-20 max-w-4xl px-6">
+        <header className="mb-12 border border-white/10 bg-gray-900/60 p-8 shadow-2xl backdrop-blur-xl md:p-12">
+          <div className="mb-6 flex items-center gap-2">
+            <span className="h-[2px] w-12 bg-cyan-500" />
+            <span className="font-mono text-sm uppercase tracking-widest text-cyan-400">
               Blog
             </span>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter">
+          <h1 className="mb-8 text-3xl font-black leading-tight tracking-tighter md:text-5xl">
             {post.title}
           </h1>
 
-          {/* 著者情報セクション */}
           <div className="flex items-center justify-between border-t border-white/10 pt-8">
             <div className="flex items-center gap-4">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+              <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
                 <Image
-                  src={`/icons/${post.author}.png`} // 指定のパス
-                  alt={post.author || "author"}
+                  src={authorIcon}
+                  alt={post.author}
                   fill
+                  sizes="48px"
                   className="object-cover"
                 />
               </div>
               <div>
-                <p className="text-sm text-gray-400 uppercase tracking-wider">
+                <p className="text-sm uppercase tracking-wider text-gray-400">
                   Written by
                 </p>
-                <p className="text-white font-bold">{post.author}</p>
+                <p className="font-bold text-white">{post.author}</p>
               </div>
             </div>
 
-            {/* 投稿日などのメタ情報（もしあれば） */}
-            <div className="text-right hidden sm:block">
-              <p className="text-sm text-gray-400 uppercase tracking-wider">
+            <div className="hidden text-right sm:block">
+              <p className="text-sm uppercase tracking-wider text-gray-400">
                 Published
               </p>
-              <p className="text-cyan-500 font-mono text-sm">{post.date}</p>
+              <p className="font-mono text-sm text-cyan-500">{post.date}</p>
             </div>
           </div>
         </header>
 
-        {/* 記事本文 */}
-        <article
-          className="prose prose-invert prose-cyan lg:prose-xl mx-auto max-w-none 
-          prose-headings:tracking-tighter prose-headings:italic
-          prose-pre:bg-gray-900/50 prose-pre:border prose-pre:border-white/10
-          prose-img:rounded-3xl shadow-cyan-500/5"
-        >
-          <ReactMarkdown
-            rehypePlugins={[rehypeRaw]}
-            remarkPlugins={[remarkGfm]}
-          >
+        <article className="prose prose-invert prose-cyan mx-auto max-w-none prose-headings:italic prose-headings:tracking-tighter prose-pre:border prose-pre:border-white/10 prose-pre:bg-gray-900/50 lg:prose-xl">
+          <ReactMarkdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
             {post.content}
           </ReactMarkdown>
         </article>

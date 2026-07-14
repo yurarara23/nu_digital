@@ -1,18 +1,37 @@
 import type { Metadata } from "next";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import { siteConfig } from "@/data/site";
 import "./globals.css";
-import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
+};
 
 export default function RootLayout({
   children,
@@ -21,9 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
         <Header />
         {children}
         <Footer />
@@ -31,29 +48,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-export const metadata: Metadata = {
-  metadataBase: new URL("https://nu-meta.vercel.app"), //追加
-  title: "nu.digital",
-  description: "nu.digitalの公式サイト",
-  openGraph: {
-    title: "nu.digital",
-    description: "nu.digitalの公式サイト",
-    url: "https://nu-meta.vercel.app/",
-    images: [
-      {
-        url: "/ogp/member.png",
-        width: 1200,
-        height: 630,
-        alt: "nu.digital",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "nu.digital",
-    description: "nu.digitalの公式サイト",
-    images: ["/ogp/member.png"],
-  },
-};
