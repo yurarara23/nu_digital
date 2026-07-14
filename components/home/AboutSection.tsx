@@ -32,15 +32,18 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-4">
             {memberImages.map((member) => (
-              <div key={member.src} className="relative aspect-square overflow-hidden bg-white">
+              <div
+                key={member.src}
+                className="relative aspect-[4/3] overflow-hidden bg-white"
+              >
                 <Image
                   src={member.src}
                   alt={member.alt}
                   fill
-                  sizes="(max-width: 768px) 28vw, 160px"
-                  className="object-cover"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 180px"
+                  className="object-contain"
                 />
               </div>
             ))}
