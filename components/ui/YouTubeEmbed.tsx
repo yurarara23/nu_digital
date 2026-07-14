@@ -5,9 +5,9 @@ type YouTubeEmbedProps = {
 
 export default function YouTubeEmbed({ videoId, title }: YouTubeEmbedProps) {
   return (
-    <div className="mb-8 aspect-video w-full">
+    <div className="mt-8 aspect-video w-full overflow-hidden rounded-[2rem] bg-blue-950 shadow-xl shadow-blue-950/20">
       <iframe
-        className="h-full w-full rounded-xl"
+        className="h-full w-full"
         src={`https://www.youtube.com/embed/${videoId}`}
         title={title ?? "YouTube video"}
         loading="lazy"

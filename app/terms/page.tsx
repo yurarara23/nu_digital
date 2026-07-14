@@ -13,17 +13,17 @@ const prohibitedActions = [
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-black px-6 py-20 text-white">
-      <header className="mx-auto mb-12 max-w-3xl border-b border-cyan-500/20 pb-8">
-        <h1 className="text-4xl font-black italic tracking-tighter text-white md:text-5xl">
-          TERMS OF SERVICE
-        </h1>
-        <p className="mt-2 font-mono text-sm uppercase tracking-[0.3em] text-cyan-500">
-          利用規約
+    <main className="min-h-screen px-5 py-14 text-[var(--brand-ink)] md:py-20">
+      <header className="mx-auto mb-10 max-w-3xl rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-blue-100">
+        <p className="font-mono text-sm font-bold uppercase tracking-[0.3em] text-[var(--brand-blue)]">
+          Terms
         </p>
+        <h1 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
+          利用規約
+        </h1>
       </header>
 
-      <article className="prose prose-invert prose-cyan mx-auto max-w-3xl prose-headings:italic prose-headings:tracking-tight prose-headings:text-cyan-400 prose-li:text-gray-400 prose-p:leading-relaxed prose-p:text-gray-400">
+      <article className="prose mx-auto max-w-3xl rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-blue-100 prose-p:leading-relaxed md:p-10">
         <p>
           この利用規約は、nu_digitalがこのWebサイト上で提供する情報やコンテンツの利用条件を定めるものです。
         </p>
@@ -51,8 +51,8 @@ export default function TermsPage() {
           当サイトは、必要と判断した場合、ユーザーに通知することなく本規約を変更できるものとします。
         </p>
 
-        <footer className="mt-20 border-t border-white/5 pt-8">
-          <p className="font-mono text-sm tracking-widest text-gray-500">
+        <footer className="mt-20 border-t border-blue-100 pt-8">
+          <p className="font-mono text-sm tracking-widest text-slate-500">
             LAST UPDATED: 2026.05.25
           </p>
         </footer>

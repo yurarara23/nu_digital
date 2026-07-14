@@ -2,17 +2,33 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #000000;
-  --foreground: #ededed;
-  --accent-cyan: #06b6d4;
+  --brand-blue: #004aad;
+  --brand-white: #ffffff;
+  --brand-ink: #071b3f;
+  --brand-pale: #f4f8ff;
+  --brand-line: #dbe7ff;
+  --background: var(--brand-pale);
+  --foreground: var(--brand-ink);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(0, 74, 173, 0.08), transparent 420px),
+    var(--background);
   color: var(--foreground);
   font-family:
     Inter, "Noto Sans JP", "Hiragino Sans", "Yu Gothic", Arial, Helvetica,
     sans-serif;
+}
+
+::selection {
+  background: var(--brand-blue);
+  color: var(--brand-white);
 }
 
 @layer utilities {
@@ -24,6 +40,11 @@ body {
   .hidden-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  .section-shell {
+    width: min(1120px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -32,80 +53,79 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 74, 173, 0.08);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
   border: 2px solid transparent;
   border-radius: 9999px;
-  background-color: var(--accent-cyan);
+  background-color: var(--brand-blue);
   background-clip: content-box;
 }
 
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: var(--accent-cyan) transparent;
+  scrollbar-color: var(--brand-blue) transparent;
 }
 
 @utility prose {
-  color: #fff;
+  color: var(--brand-ink);
 
   h1,
   h2,
   h3,
   h4 {
-    color: #22d3ee;
-    font-weight: 800;
+    color: var(--brand-ink);
+    font-weight: 900;
     letter-spacing: 0;
   }
 
   a {
-    color: var(--accent-cyan);
-    font-weight: 500;
-    text-decoration-color: rgba(6, 182, 212, 0.3);
+    color: var(--brand-blue);
+    font-weight: 700;
+    text-decoration-color: rgba(0, 74, 173, 0.3);
     transition: all 0.2s;
   }
 
   a:hover {
-    color: #22d3ee;
-    text-decoration-color: #22d3ee;
+    text-decoration-color: var(--brand-blue);
   }
 
   strong {
-    color: #fff;
-    background: linear-gradient(transparent 80%, rgba(6, 182, 212, 0.3) 0);
+    color: var(--brand-ink);
+    background: linear-gradient(transparent 78%, rgba(0, 74, 173, 0.18) 0);
   }
 
   blockquote {
     padding-left: 1.5rem;
-    border-left-color: var(--accent-cyan);
-    background-color: rgba(6, 182, 212, 0.05);
-    color: #ccc;
+    border-left-color: var(--brand-blue);
+    background-color: rgba(0, 74, 173, 0.06);
+    color: #334155;
     font-style: italic;
   }
 
   hr {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--brand-line);
   }
 
   code {
     padding: 0.2em 0.4em;
     border-radius: 4px;
-    background-color: rgba(34, 211, 238, 0.1);
-    color: #22d3ee;
+    background-color: rgba(0, 74, 173, 0.08);
+    color: var(--brand-blue);
   }
 
   pre {
-    border: 1px solid rgba(6, 182, 212, 0.2);
-    background-color: #111;
+    border: 1px solid var(--brand-line);
+    background-color: #071b3f;
   }
 
   th {
-    border-bottom-color: var(--accent-cyan);
-    color: #22d3ee;
+    border-bottom-color: var(--brand-blue);
+    color: var(--brand-blue);
   }
 
   td {
-    border-bottom-color: #222;
+    border-bottom-color: var(--brand-line);
   }
 }

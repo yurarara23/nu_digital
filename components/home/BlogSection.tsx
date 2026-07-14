@@ -1,46 +1,65 @@
 import Link from "next/link";
-import PostCard from "@/components/blog/PostCard";
-import { getLatestPosts } from "@/lib/markdown";
+import ContentCard from "@/components/content/ContentCard";
+import MotionReveal from "@/components/motion/MotionReveal";
+import { getLatestContent } from "@/lib/markdown";
 
 export default function BlogSection() {
-  const latestPosts = getLatestPosts(20);
+  const latestNews = getLatestContent("news", 3);
+  const latestPosts = getLatestContent("blog", 6);
 
   return (
-    <section className="px-6 py-20">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-10 flex items-end justify-between gap-6">
-          <div className="flex flex-col">
-            <h2 className="text-5xl font-black uppercase italic leading-none tracking-tighter text-white">
-              Blog
-            </h2>
-            <div className="mt-2 flex items-center gap-2">
-              <span className="h-[2px] w-10 bg-cyan-500 shadow-[0_0_8px_#06b6d4]" />
-              <p className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-cyan-500">
-                Latest
+    <section className="py-16">
+      <div className="section-shell space-y-14">
+        <MotionReveal>
+          <div className="grid gap-6 lg:grid-cols-[0.7fr_1.3fr]">
+            <div className="rounded-[2rem] bg-[var(--brand-blue)] p-8 text-white">
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-white/65">
+                Information
               </p>
+              <h2 className="mt-3 text-4xl font-black tracking-tight">News</h2>
+              <p className="mt-4 text-sm leading-7 text-white/75">
+                募集、イベント告知、サイト更新など、団体からのお知らせはこちら。
+              </p>
+              <Link
+                href="/news"
+                className="mt-8 inline-flex rounded-full bg-white px-5 py-3 text-sm font-black text-[var(--brand-blue)]"
+              >
+                ニュース一覧
+              </Link>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-3">
+              {latestNews.map((post) => (
+                <ContentCard key={post.slug} {...post} compact />
+              ))}
             </div>
           </div>
+        </MotionReveal>
 
-          <Link
-            href="/blog"
-            className="border-b border-gray-800 pb-1 text-xs font-bold uppercase tracking-widest text-gray-500 transition-colors hover:border-cyan-500 hover:text-cyan-400"
-          >
-            View All Blog
-          </Link>
-        </div>
+        <MotionReveal delay={0.08}>
+          <div className="mb-8 flex items-end justify-between gap-6">
+            <div>
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-[var(--brand-blue)]">
+                Journal
+              </p>
+              <h2 className="mt-2 text-4xl font-black tracking-tight text-[var(--brand-ink)]">
+                Blog
+              </h2>
+            </div>
+            <Link
+              href="/blog"
+              className="rounded-full bg-white px-5 py-3 text-sm font-black text-[var(--brand-blue)] shadow-sm ring-1 ring-blue-100"
+            >
+              ブログ一覧
+            </Link>
+          </div>
 
-        <div className="relative">
-          <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-12 bg-gradient-to-r from-black to-transparent" />
-          <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-12 bg-gradient-to-l from-black to-transparent" />
-
-          <div className="custom-scrollbar hidden-scrollbar flex gap-6 overflow-x-auto pb-12">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {latestPosts.map((post) => (
-              <div key={post.slug} className="min-w-[280px] md:min-w-[320px]">
-                <PostCard {...post} />
-              </div>
+              <ContentCard key={post.slug} {...post} compact />
             ))}
           </div>
-        </div>
+        </MotionReveal>
       </div>
     </section>
   );

@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { FaHome, FaPenNib, FaTimes } from "react-icons/fa";
+import { FaHome, FaInfoCircle, FaPenNib, FaRegNewspaper, FaTimes } from "react-icons/fa";
 import { navItems, siteConfig } from "@/data/site";
 
 const menuIcons = {
   Home: FaHome,
+  News: FaRegNewspaper,
   Blog: FaPenNib,
-  Project: FaPenNib,
-  Terms: FaPenNib,
+  Project: FaInfoCircle,
+  Terms: FaInfoCircle,
 };
 
 type SidebarProps = {
@@ -21,25 +22,19 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
     <>
       <aside
         aria-hidden={!open}
-        className={`fixed left-0 top-0 z-50 h-full w-72 border-r border-cyan-500/30 bg-black/80 text-white backdrop-blur-xl transition-all duration-500 ease-in-out ${
+        className={`fixed left-0 top-0 z-50 h-full w-80 bg-[var(--brand-blue)] text-white shadow-2xl transition-all duration-500 ease-in-out ${
           open ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
         }`}
       >
-        <div className="flex items-center justify-between border-b border-white/10 p-6">
-          <span className="text-xl font-black italic tracking-tighter text-cyan-400">
-            MENU
-          </span>
+        <div className="flex items-center justify-between border-b border-white/15 p-6">
+          <span className="text-xl font-black tracking-tight">{siteConfig.name}</span>
           <button
             type="button"
             onClick={onClose}
             aria-label="メニューを閉じる"
-            className="transition-transform duration-300 hover:rotate-90"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20"
           >
-            <FaTimes
-              aria-hidden
-              size={24}
-              className="text-gray-400 hover:text-cyan-400"
-            />
+            <FaTimes aria-hidden size={20} />
           </button>
         </div>
 
@@ -51,25 +46,20 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="group flex items-center gap-4 rounded-xl p-3 transition-all duration-300 hover:bg-cyan-500/10"
+                className="group flex items-center gap-4 rounded-2xl p-4 text-white transition hover:bg-white hover:text-[var(--brand-blue)]"
                 onClick={onClose}
               >
-                <span className="text-xl text-gray-500 transition-colors group-hover:text-cyan-400">
-                  <Icon aria-hidden />
-                </span>
-                <span className="text-lg font-medium tracking-wide transition-transform duration-300 group-hover:translate-x-2">
+                <Icon aria-hidden className="text-lg" />
+                <span className="text-lg font-black tracking-tight">
                   {item.name}
                 </span>
-                <span className="ml-auto h-1.5 w-1.5 rounded-full bg-cyan-500 opacity-0 shadow-[0_0_8px_#06b6d4] transition-all group-hover:opacity-100" />
               </Link>
             );
           })}
         </nav>
 
-        <div className="absolute bottom-10 left-6">
-          <div className="text-[10px] uppercase tracking-[0.3em] text-gray-500">
-            {siteConfig.name}
-          </div>
+        <div className="absolute bottom-8 left-6 right-6 rounded-3xl bg-white/10 p-5 text-sm leading-6 text-white/80">
+          Digital creation project for games, VR, web and more.
         </div>
       </aside>
 
@@ -77,7 +67,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         <button
           type="button"
           aria-label="メニューを閉じる"
-          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-500"
+          className="fixed inset-0 z-40 bg-blue-950/45 backdrop-blur-sm"
           onClick={onClose}
         />
       )}

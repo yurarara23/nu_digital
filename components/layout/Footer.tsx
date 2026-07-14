@@ -6,26 +6,27 @@ const githubLink = socialLinks.find((link) => link.type === "github");
 
 export default function Footer() {
   return (
-    <footer className="relative mt-20 border-t border-cyan-500/20 bg-black px-6 py-12 text-white">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 md:flex-row">
-        <div className="flex flex-col items-center gap-2 md:items-start">
-          <div className="mb-2 flex items-center gap-2">
-            <span className="text-xl font-black italic tracking-tighter">
-              {siteConfig.name}
-            </span>
-          </div>
-          <p className="text-xs uppercase tracking-widest text-gray-500">
+    <footer className="relative mt-20 bg-[var(--brand-blue)] px-6 py-12 text-white">
+      <div className="mx-auto flex max-w-7xl flex-col justify-between gap-10 md:flex-row">
+        <div className="max-w-md">
+          <p className="text-3xl font-black tracking-tight">{siteConfig.name}</p>
+          <p className="mt-4 text-sm leading-7 text-white/75">
+            ゲーム、VRChat、3D、Webなどを横断して、デジタル創作を続けるプロジェクト団体です。
+          </p>
+          <p className="mt-6 text-xs uppercase tracking-widest text-white/55">
             &copy; 2026 {siteConfig.name}.
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8 text-sm font-medium text-gray-400">
-          <Link
-            href="/terms"
-            className="group relative transition-colors duration-300 hover:text-cyan-400"
-          >
+        <div className="flex flex-wrap items-start gap-8 text-sm font-bold text-white/80">
+          <Link href="/news" className="hover:text-white">
+            News
+          </Link>
+          <Link href="/blog" className="hover:text-white">
+            Blog
+          </Link>
+          <Link href="/terms" className="hover:text-white">
             利用規約
-            <span className="absolute -bottom-1 left-0 h-px w-0 bg-cyan-500 transition-all duration-300 group-hover:w-full" />
           </Link>
 
           {githubLink && (
@@ -33,7 +34,7 @@ export default function Footer() {
               href={githubLink.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 transition-colors hover:text-white"
+              className="flex items-center gap-2 hover:text-white"
             >
               <FaGithub aria-hidden size={18} />
               <span>GitHub</span>

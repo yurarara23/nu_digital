@@ -9,12 +9,12 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  return getAllContentSlugs("blog");
+  return getAllContentSlugs("news");
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = getContentBySlug("blog", slug);
+  const post = getContentBySlug("news", slug);
 
   if (!post) {
     return {};
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `${siteConfig.url}/blog/${slug}`,
+      url: `${siteConfig.url}/news/${slug}`,
       images: [{ url: imageUrl, width: 1200, height: 630, alt: post.title }],
       type: "article",
     },
@@ -43,9 +43,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function PostPage({ params }: Props) {
+export default async function NewsPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = getContentBySlug("blog", slug);
+  const post = getContentBySlug("news", slug);
 
   if (!post) {
     notFound();

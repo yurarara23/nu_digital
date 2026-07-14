@@ -2,26 +2,38 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const postsDirectory = path.join(process.cwd(), "app", "blog");
+export type ContentCollection = "blog" | "news";
 
-export type BlogPostMeta = {
+const contentDirectories: Record<ContentCollection, string> = {
+  blog: path.join(process.cwd(), "content", "blog"),
+  news: path.join(process.cwd(), "content", "news"),
+};
+
+export type ContentMeta = {
+  collection: ContentCollection;
   slug: string;
   title: string;
   image: string;
   author: string;
   date: string;
+  category: string;
+  excerpt: string;
 };
 
-export type BlogPost = BlogPostMeta & {
+export type ContentPost = ContentMeta & {
   content: string;
 };
 
-function readPostFile(slug: string) {
+function getDirectory(collection: ContentCollection) {
+  return contentDirectories[collection];
+}
+
+function readContentFile(collection: ContentCollection, slug: string) {
   if (!/^[\w.-]+$/.test(slug)) {
     return null;
   }
 
-  const filePath = path.join(postsDirectory, `${slug}.md`);
+  const filePath = path.join(getDirectory(collection), `${slug}.md`);
 
   if (!fs.existsSync(filePath)) {
     return null;
@@ -30,56 +42,78 @@ function readPostFile(slug: string) {
   return fs.readFileSync(filePath, "utf-8");
 }
 
-function normalizePost(slug: string, fileContent: string): BlogPost {
+function normalizeContent(
+  collection: ContentCollection,
+  slug: string,
+  fileContent: string,
+): ContentPost {
   const { data, content } = matter(fileContent);
+  const fallbackExcerpt = content.replace(/\s+/g, " ").trim().slice(0, 120);
 
   return {
+    collection,
     slug,
     title: String(data.title ?? slug),
     image: String(data.image ?? "/ogp/member.png"),
     author: String(data.author ?? "nu_digital"),
     date: String(data.date ?? ""),
+    category: String(data.category ?? (collection === "news" ? "News" : "Blog")),
+    excerpt: String(data.excerpt ?? fallbackExcerpt),
     content,
   };
 }
 
-export function getAllPosts(): BlogPostMeta[] {
+export function getAllContent(collection: ContentCollection): ContentMeta[] {
+  const directory = getDirectory(collection);
+
+  if (!fs.existsSync(directory)) {
+    return [];
+  }
+
   return fs
-    .readdirSync(postsDirectory)
+    .readdirSync(directory)
     .filter((fileName) => fileName.endsWith(".md"))
     .map((fileName) => {
       const slug = fileName.replace(/\.md$/, "");
-      const fileContent = fs.readFileSync(
-        path.join(postsDirectory, fileName),
-        "utf-8",
-      );
-      const post = normalizePost(slug, fileContent);
+      const fileContent = fs.readFileSync(path.join(directory, fileName), "utf-8");
+      const post = normalizeContent(collection, slug, fileContent);
 
       return {
+        collection: post.collection,
         slug: post.slug,
         title: post.title,
         image: post.image,
         author: post.author,
         date: post.date,
+        category: post.category,
+        excerpt: post.excerpt,
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-export function getLatestPosts(limit: number) {
-  return getAllPosts().slice(0, limit);
+export function getLatestContent(collection: ContentCollection, limit: number) {
+  return getAllContent(collection).slice(0, limit);
 }
 
-export function getPostBySlug(slug: string) {
-  const fileContent = readPostFile(slug);
+export function getContentBySlug(
+  collection: ContentCollection,
+  slug: string,
+) {
+  const fileContent = readContentFile(collection, slug);
 
   if (!fileContent) {
     return null;
   }
 
-  return normalizePost(slug, fileContent);
+  return normalizeContent(collection, slug, fileContent);
 }
 
-export function getAllPostSlugs() {
-  return getAllPosts().map((post) => ({ slug: post.slug }));
+export function getAllContentSlugs(collection: ContentCollection) {
+  return getAllContent(collection).map((post) => ({ slug: post.slug }));
 }
+
+export const getAllPosts = () => getAllContent("blog");
+export const getLatestPosts = (limit: number) => getLatestContent("blog", limit);
+export const getPostBySlug = (slug: string) => getContentBySlug("blog", slug);
+export const getAllPostSlugs = () => getAllContentSlugs("blog");

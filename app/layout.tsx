@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import PageTransition from "@/components/motion/PageTransition";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
 
@@ -42,7 +43,7 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <Header />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Footer />
       </body>
     </html>
