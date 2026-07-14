@@ -1,57 +1,39 @@
----
-title: "オープンキャンパス駿河台に出展しました"
-image: "/2026_6/1.jpg"
-author: "yurarara"
-date: "2026-06-22"
-category: "Event"
-excerpt: "オープンキャンパス駿河台にて、高校生に向けて制作物の展示や説明を行いました。"
----
+オープンキャンパス駿河台にて、nu_digitalとして制作物の展示や活動紹介を行いました。
 
-オープンキャンパス駿河台にて、nu_digitalとして制作物の展示を行いました。
+当日は、高校生や保護者の方に向けて、団体のメンバーが制作している作品を展示しました。ゲーム、VRChat、3D、Webなど、普段どのような分野で制作活動を行っているのかを、実際の作品を見せながら紹介しました。
 
-当日は、高校生に向けて団体で制作している作品の展示や説明を行いました。ゲーム、VRChat、3D、Webなど、普段の制作活動がどのようなものなのかを直接紹介できる機会になりました。
-
-<figure>
-  <img src="/2026_6/1.jpg" alt="オープンキャンパス駿河台での展示の様子" style="width:100%">
-  <figcaption>展示の様子</figcaption>
-</figure>
+<figure> <img src="/2026_6/1.jpg" alt="オープンキャンパス駿河台での展示の様子" style="width:100%"> </figure>
 
 ## メンバーによるプレゼン
 
-また、本団体から yurarara、iwa、syama の3名が登壇し、それぞれの制作や活動についてプレゼンを行いました。
+展示に加えて、本団体から yurarara、iwa、syama の3名が登壇し、それぞれの制作活動や作品についてプレゼンを行いました。
 
-<figure>
-  <img src="/2026_6/2A.jpg" alt="yurararaによるプレゼンの様子" style="width:100%">
-  <figcaption>yurararaによるプレゼン</figcaption>
-</figure>
+普段取り組んでいる制作内容だけでなく、作品を作り始めたきっかけや、制作を通して学んだことなどについても紹介しました。
 
-<figure>
-  <img src="/2026_6/2B.jpg" alt="iwaによるプレゼンの様子" style="width:100%">
-  <figcaption>iwaによるプレゼン</figcaption>
-</figure>
+<figure> <img src="/2026_6/2A.jpg" alt="yurararaによるプレゼンの様子" style="width:100%"></figure>
 
-<figure>
-  <img src="/2026_6/2C.jpg" alt="syamaによるプレゼンの様子" style="width:100%">
-  <figcaption>syamaによるプレゼン</figcaption>
-</figure>
+<figure> <img src="/2026_6/2B.jpg" alt="iwaによるプレゼンの様子" style="width:100%"> </figure>
 
-## 配布したリーフレット
+<figure> <img src="/2026_6/2C.jpg" alt="syamaによるプレゼンの様子" style="width:100%"> </figure>
 
-来場者向けに、団体紹介用のリーフレットも配布しました。
+## 団体紹介リーフレットの配布
 
-<figure>
-  <img src="/2026_6/3A.png" alt="配布したリーフレット表面" style="width:100%">
-  <figcaption>配布したリーフレット</figcaption>
-</figure>
+来場者にnu_digitalの活動をより分かりやすく知ってもらうため、団体紹介用のリーフレットも制作し、会場で配布しました。
 
-<figure>
-  <img src="/2026_6/3B.png" alt="配布したリーフレット裏面" style="width:100%">
-  <figcaption>配布したリーフレット</figcaption>
-</figure>
+リーフレットの制作には、今年度からプロジェクトの活動に協力しているメンバーも参加しました。syugaがレイアウトおよび表紙のデザインを担当し、asimpulseがキャラクターのデフォルメイラストなどを担当しました。
 
-高校生に向けて活動を説明することで、自分たちの制作を改めて整理する機会にもなりました。今後も、制作物を外に届ける場を大切にしていきます。
+<figure> <img src="/2026_6/3A.png" alt="配布した団体紹介リーフレットの表面" style="width:100%"> <figcaption>団体紹介リーフレットの表面</figcaption> </figure>
 
-<figure>
-  <img src="/2026_6/4.jpg" alt="" style="width:100%">
-  <figcaption></figcaption>
-</figure>
+<figure> <img src="/2026_6/3B.png" alt="配布した団体紹介リーフレットの裏面" style="width:100%"> <figcaption>団体紹介リーフレットの裏面</figcaption> </figure>
+
+## 展示を終えて
+
+実際に会場で展示を行うことで、準備段階では気づかなかった不足点や、今後新たに必要となるものが見えてきました。
+
+作品を用意するだけでなく、来場者に分かりやすく説明する方法や、展示を円滑に進めるための仕組みなど、改善できる部分はまだ多くあります。今回得られた反省や経験を一つずつ積み重ね、今後の展示をより良いものへと最適化していきたいと思います。
+
+また、高校生に向けて活動を紹介することで、日本大学でもこのような制作活動ができるということを知ってもらう機会にもなりました。
+
+今回の展示を通して、nu_digitalの活動や、大学でデジタルコンテンツを制作することの楽しさに少しでも興味を持ってもらえていればうれしいです。
+
+<figure> <img src="/2026_6/4.jpg" alt="" style="width:100%"></figure>
