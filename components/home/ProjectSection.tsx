@@ -1,10 +1,15 @@
-import { homeCopy, homeLinks, projectImages } from "@/data/site";
+import { featuredProjects, homeCopy, homeLinks } from "@/data/site";
 import MotionReveal from "@/components/motion/MotionReveal";
 import ButtonLink from "@/components/ui/ButtonLink";
 import ImageCarousel from "@/components/ui/ImageCarousel";
 import YouTubeEmbed from "@/components/ui/YouTubeEmbed";
 
 export default function ProjectSection() {
+  const contentImages = featuredProjects.map((project) => ({
+    src: project.image,
+    alt: project.title,
+  }));
+
   return (
     <section className="bg-[var(--brand-blue)] py-16 text-white lg:py-24">
       <MotionReveal className="section-shell">
@@ -32,7 +37,7 @@ export default function ProjectSection() {
           </div>
 
           <div>
-            <ImageCarousel images={projectImages} />
+            <ImageCarousel images={contentImages} />
             <YouTubeEmbed videoId="HHPRAg5ijXE" title="nu_digital Project Movie" />
           </div>
         </div>

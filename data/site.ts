@@ -65,11 +65,6 @@ export const memberImages = [
   alt: `nu_digital member ${fileName.replace(/\.[^.]+$/, "")}`,
 }));
 
-export const projectImages = Array.from({ length: 10 }, (_, index) => ({
-  src: `/project/${index + 1}.jpg`,
-  alt: `nu_digital project image ${index + 1}`,
-}));
-
 export const recruitImages = [
   { src: "/recruit/recruit_1.jpg", alt: "nu_digital recruitment image 1" },
   { src: "/recruit/recruit_2.jpg", alt: "nu_digital recruitment image 2" },
@@ -116,10 +111,24 @@ export const homeLinks = {
 
 export const featuredProjects = [
   {
+    title: "nu_room",
+    description:
+      "nu_digitalの活動や制作物を紹介するためのVRChatワールドです。団体の雰囲気や制作の入口を体験できます。",
+    image: "/contents/nu_room.png",
+    link: "https://vrchat.com/home/world/wrld_560b9015-2293-4530-b97f-130125d37ccc/info",
+  },
+  {
+    title: "FogLand",
+    description:
+      "霧に包まれた空間を探索できるVRChatワールドです。雰囲気づくりと空間体験を重視して制作しました。",
+    image: "/contents/FogLand.png",
+    link: "https://vrchat.com/home/world/wrld_83eb91f2-aaf8-4576-88eb-5e6f09103da7/info",
+  },
+  {
     title: "DimensionsGate",
     description:
       "メタバース空間で4次元の不思議な体験を楽しめるVRChatワールドです。",
-    image: "/mizmelon/DG/dimmgate_top.webp",
+    image: "/contents/DimensionsGate.png",
     link: "https://vrchat.com/home/world/wrld_d84a41e8-fd6a-4167-bc90-637af6fc3c41/info",
   },
 ];

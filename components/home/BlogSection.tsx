@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ContentCard from "@/components/content/ContentCard";
 import MotionReveal from "@/components/motion/MotionReveal";
-import { projectImages } from "@/data/site";
+import { featuredProjects } from "@/data/site";
 import { getLatestContent } from "@/lib/markdown";
 
 export default function BlogSection() {
@@ -69,15 +69,17 @@ export default function BlogSection() {
 
         <MotionReveal delay={0.1} className="mt-20">
           <div className="grid gap-4 md:grid-cols-3">
-            {projectImages.slice(0, 3).map((image, index) => (
+            {featuredProjects.slice(0, 3).map((project) => (
               <Link
-                key={image.src}
-                href="/project"
+                key={project.link}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative aspect-[4/5] overflow-hidden bg-[var(--brand-blue)]"
               >
                 <Image
-                  src={image.src}
-                  alt={image.alt}
+                  src={project.image}
+                  alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 360px"
                   className="object-cover transition duration-700 group-hover:scale-105"
@@ -85,10 +87,10 @@ export default function BlogSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-950/70 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                   <p className="font-mono text-xs font-black uppercase tracking-[0.28em] text-white/70">
-                    Products
+                    VRChat World
                   </p>
                   <h3 className="mt-2 text-3xl font-black uppercase tracking-tight">
-                    Work 0{index + 1}
+                    {project.title}
                   </h3>
                 </div>
               </Link>
