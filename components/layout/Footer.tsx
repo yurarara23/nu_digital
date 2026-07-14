@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-10 md:flex-row">
         <div className="max-w-md">
           <p className="text-3xl font-black tracking-tight">{siteConfig.name}</p>
-          <p className="mt-4 text-sm leading-7 text-white/75">
+          <p className="mt-4 text-sm font-bold leading-7 text-white/75">
             ゲーム、VRChat、3D、Webなどを横断して、デジタル創作を続けるプロジェクト団体です。
           </p>
           <p className="mt-6 text-xs uppercase tracking-widest text-white/55">
@@ -24,6 +24,9 @@ export default function Footer() {
           </Link>
           <Link href="/blog" className="hover:text-white">
             Blog
+          </Link>
+          <Link href="/project" className="hover:text-white">
+            Project
           </Link>
           <Link href="/terms" className="hover:text-white">
             利用規約

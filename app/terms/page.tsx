@@ -14,16 +14,16 @@ const prohibitedActions = [
 export default function TermsPage() {
   return (
     <main className="min-h-screen px-5 py-14 text-[var(--brand-ink)] md:py-20">
-      <header className="mx-auto mb-10 max-w-3xl rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-blue-100">
-        <p className="font-mono text-sm font-bold uppercase tracking-[0.3em] text-[var(--brand-blue)]">
+      <header className="mx-auto mb-12 max-w-3xl border-b-4 border-[var(--brand-blue)] pb-6">
+        <p className="font-mono text-sm font-black uppercase tracking-[0.3em] text-[var(--brand-blue)]">
           Terms
         </p>
-        <h1 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
+        <h1 className="mt-3 text-5xl font-black uppercase leading-none tracking-tight md:text-6xl">
           利用規約
         </h1>
       </header>
 
-      <article className="prose mx-auto max-w-3xl rounded-[2rem] bg-white p-8 shadow-sm ring-1 ring-blue-100 prose-p:leading-relaxed md:p-10">
+      <article className="prose mx-auto max-w-3xl border-b border-slate-200 bg-white px-5 py-8 prose-p:leading-relaxed md:px-8">
         <p>
           この利用規約は、nu_digitalがこのWebサイト上で提供する情報やコンテンツの利用条件を定めるものです。
         </p>
@@ -51,7 +51,7 @@ export default function TermsPage() {
           当サイトは、必要と判断した場合、ユーザーに通知することなく本規約を変更できるものとします。
         </p>
 
-        <footer className="mt-20 border-t border-blue-100 pt-8">
+        <footer className="mt-20 border-t border-slate-200 pt-8">
           <p className="font-mono text-sm tracking-widest text-slate-500">
             LAST UPDATED: 2026.05.25
           </p>
