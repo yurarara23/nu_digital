@@ -48,18 +48,19 @@ export const heroSlides = [
 ];
 
 export const memberImages = [
-  "member_alma.jpg",
-  "member_ff.jpg",
+  "member_yura.jpg",
   "member_iwa.jpg",
-  "member_lemonkey.jpg",
   "member_mizmelon.jpg",
+  "member_syama.jpg",
   "member_nero.jpg",
   "member_potty.jpg",
-  "member_s.jpg",
-  "member_syama.jpg",
-  "member_takoyaki.jpg",
+  "member_alma.jpg",
   "member_yoshi.jpg",
-  "member_yura.jpg",
+  "member_ff.jpg",
+  "member_lemonkey.jpg",
+  "member_s.jpg",
+  "member_takoyaki.jpg",
+  "member_asi.jpg",
 ].map((fileName) => ({
   src: `/member/${fileName}`,
   alt: `nu_digital member ${fileName.replace(/\.[^.]+$/, "")}`,
@@ -113,21 +114,20 @@ export const featuredProjects = [
   {
     title: "nu_room",
     description:
-      "nu_digitalの活動や制作物を紹介するためのVRChatワールドです。団体の雰囲気や制作の入口を体験できます。",
+      "nu_digitalの拠点件活動や制作物を紹介するためのVRChatワールド。",
     image: "/contents/nu_room.png",
     link: "https://vrchat.com/home/world/wrld_560b9015-2293-4530-b97f-130125d37ccc/info",
   },
   {
     title: "FogLand",
     description:
-      "霧に包まれた空間を探索できるVRChatワールドです。雰囲気づくりと空間体験を重視して制作しました。",
+      "霧に包まれた空間を魔法を使って探索できるオープンワールドVRChatゲームワールド。",
     image: "/contents/FogLand.png",
     link: "https://vrchat.com/home/world/wrld_83eb91f2-aaf8-4576-88eb-5e6f09103da7/info",
   },
   {
     title: "DimensionsGate",
-    description:
-      "メタバース空間で4次元の不思議な体験を楽しめるVRChatワールドです。",
+    description: "メタバース空間で4次元を体験を楽しめるVRChatワールド。",
     image: "/contents/DimensionsGate.png",
     link: "https://vrchat.com/home/world/wrld_d84a41e8-fd6a-4167-bc90-637af6fc3c41/info",
   },

@@ -57,7 +57,7 @@ export default function HeroSlider() {
           className="max-w-5xl text-white"
         >
           <p className="mb-5 font-mono text-xs font-black uppercase tracking-[0.34em] text-white/75">
-            nu_digital / digital creation project
+            nu_digital
           </p>
           <h1 className="editorial-title max-w-4xl font-black uppercase">
             Playable
@@ -66,9 +66,6 @@ export default function HeroSlider() {
             <br />
             works
           </h1>
-          <p className="mt-7 max-w-xl text-base font-bold leading-8 text-white/82 md:text-lg">
-            ゲーム、VRChatワールド、3D、Web、映像、サウンドを横断して、触って遊べるデジタル創作をつくっています。
-          </p>
         </motion.div>
 
         <div className="mt-10 grid max-w-3xl border-y border-white/35 text-white md:grid-cols-3">
