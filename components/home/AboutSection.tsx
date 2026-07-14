@@ -2,16 +2,28 @@ import Image from "next/image";
 import { homeCopy, homeLinks, memberImages } from "@/data/site";
 import MotionReveal from "@/components/motion/MotionReveal";
 import ButtonLink from "@/components/ui/ButtonLink";
-import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function AboutSection() {
   return (
-    <section className="py-16" aria-labelledby="about-heading">
+    <section className="bg-[#f7f8fb] py-16 lg:py-24" aria-labelledby="about-heading">
       <MotionReveal className="section-shell">
-        <div className="grid gap-10 rounded-[2.5rem] bg-white p-6 shadow-sm ring-1 ring-blue-100 md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr]">
           <div>
-            <SectionHeader title="About Us" description={homeCopy.about} />
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <p className="font-mono text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-blue)]">
+              About
+            </p>
+            <h2
+              id="about-heading"
+              className="mt-3 text-5xl font-black uppercase leading-none tracking-tight text-[var(--brand-ink)]"
+            >
+              We make
+              <br />
+              digital works.
+            </h2>
+            <p className="mt-7 text-base font-bold leading-8 text-slate-600">
+              {homeCopy.about}
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               {homeLinks.about.map((link) => (
                 <ButtonLink key={link.href} href={link.href}>
                   {link.label}
@@ -20,12 +32,9 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
+          <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
             {memberImages.map((member) => (
-              <div
-                key={member.src}
-                className="relative aspect-square overflow-hidden rounded-3xl bg-blue-50"
-              >
+              <div key={member.src} className="relative aspect-square overflow-hidden bg-white">
                 <Image
                   src={member.src}
                   alt={member.alt}

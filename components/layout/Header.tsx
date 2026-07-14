@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaBars, FaGithub, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { siteConfig, socialLinks } from "@/data/site";
 import Sidebar from "@/components/layout/Sidebar";
+import { navItems, siteConfig, socialLinks } from "@/data/site";
 
 const socialIcons = {
   github: FaGithub,
@@ -15,44 +15,33 @@ const socialIcons = {
 
 export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const primaryNav = navItems.filter((item) => item.name !== "Terms");
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-blue-100/80 bg-white/85 text-[var(--brand-ink)] shadow-sm backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-          <div className="flex items-center gap-4">
-            <button
-              type="button"
-              onClick={() => setSidebarOpen(true)}
-              aria-label="メニューを開く"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[var(--brand-blue)] text-white transition hover:scale-105"
-            >
-              <FaBars aria-hidden size={18} />
-            </button>
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white text-[var(--brand-ink)] lg:fixed lg:inset-y-0 lg:left-0 lg:w-[104px] lg:border-b-0 lg:border-r">
+        <div className="flex h-16 items-center justify-between px-4 lg:h-full lg:flex-col lg:px-0 lg:py-5">
+          <Link
+            href="/"
+            aria-label={`${siteConfig.name} home`}
+            className="grid h-12 w-12 place-items-center bg-[var(--brand-blue)] text-sm font-black text-white"
+          >
+            nu
+          </Link>
 
-            <Link href="/" className="group flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--brand-blue)] text-sm font-black text-white">
-                nu
-              </span>
-              <span className="text-xl font-black tracking-tight transition-colors duration-300 group-hover:text-[var(--brand-blue)]">
-                {siteConfig.name}
-              </span>
-            </Link>
-          </div>
-
-          <nav className="hidden items-center gap-7 text-sm font-bold md:flex">
-            <Link href="/news" className="hover:text-[var(--brand-blue)]">
-              News
-            </Link>
-            <Link href="/blog" className="hover:text-[var(--brand-blue)]">
-              Blog
-            </Link>
-            <Link href="/project" className="hover:text-[var(--brand-blue)]">
-              Project
-            </Link>
+          <nav className="hidden items-center gap-2 lg:flex lg:flex-col">
+            {primaryNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="vertical-nav-item text-[11px] font-black uppercase tracking-[0.18em] text-slate-500 transition hover:text-[var(--brand-blue)]"
+              >
+                {item.name}
+              </Link>
+            ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="hidden flex-col items-center gap-4 lg:flex">
             {socialLinks.map((link) => {
               const Icon = socialIcons[link.type];
 
@@ -63,13 +52,22 @@ export default function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="text-[var(--brand-blue)] transition hover:-translate-y-0.5 hover:opacity-75"
+                  className="text-slate-500 transition hover:text-[var(--brand-blue)]"
                 >
-                  <Icon aria-hidden size={20} />
+                  <Icon aria-hidden size={18} />
                 </a>
               );
             })}
           </div>
+
+          <button
+            type="button"
+            onClick={() => setSidebarOpen(true)}
+            aria-label="メニューを開く"
+            className="inline-flex h-11 w-11 items-center justify-center border border-slate-200 text-[var(--brand-blue)] lg:hidden"
+          >
+            <FaBars aria-hidden size={18} />
+          </button>
         </div>
       </header>
 

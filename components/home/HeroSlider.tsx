@@ -1,115 +1,101 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
-import { heroSlides, homeFeatureTiles } from "@/data/site";
+import { heroSlides } from "@/data/site";
 
-const heroActions = [
-  { href: "/news", label: "News" },
-  { href: "/blog", label: "Blog" },
-  { href: "#join", label: "Join" },
+const heroLinks = [
+  { href: "/news", label: "NEWS" },
+  { href: "/project", label: "WORKS" },
+  { href: "/blog", label: "BLOG" },
 ];
 
 export default function HeroSlider() {
   const [index, setIndex] = useState(0);
+  const current = heroSlides[index];
 
   useEffect(() => {
     const timer = window.setInterval(() => {
       setIndex((prev) => (prev + 1) % heroSlides.length);
-    }, 5200);
+    }, 5600);
 
     return () => window.clearInterval(timer);
   }, []);
 
   return (
-    <section className="relative overflow-hidden px-5 py-10 md:py-16">
-      <div className="section-shell grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+    <section className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-[var(--brand-blue)] lg:min-h-screen">
+      <AnimatePresence mode="wait">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-8"
-        >
-          <div className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.28em] text-[var(--brand-blue)] shadow-sm ring-1 ring-blue-100">
-            Digital Creation Project
-          </div>
-
-          <div className="space-y-5">
-            <h1 className="text-5xl font-black leading-[0.95] tracking-tight text-[var(--brand-ink)] md:text-7xl">
-              Make the
-              <span className="block text-[var(--brand-blue)]">Playable Future.</span>
-            </h1>
-            <p className="max-w-xl text-lg leading-8 text-slate-600">
-              nu_digitalは、ゲーム、VRChat、3D、Web、映像、サウンドを横断して、触って遊べるデジタル創作をつくる団体です。
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            {heroActions.map((action, actionIndex) => (
-              <Link
-                key={action.href}
-                href={action.href}
-                className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-black transition ${
-                  actionIndex === 0
-                    ? "bg-[var(--brand-blue)] text-white hover:-translate-y-0.5"
-                    : "bg-white text-[var(--brand-blue)] ring-1 ring-blue-100 hover:-translate-y-0.5"
-                }`}
-              >
-                {action.label}
-                <FaArrowRight aria-hidden size={13} />
-              </Link>
-            ))}
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-3">
-            {homeFeatureTiles.map((tile) => (
-              <div
-                key={tile.title}
-                className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-blue-100"
-              >
-                <p className="font-black text-[var(--brand-blue)]">{tile.title}</p>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {tile.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
+          key={current.src}
+          className="absolute inset-0"
+          initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-[var(--brand-blue)] shadow-2xl shadow-blue-900/20">
-            {heroSlides.map((slide, slideIndex) => (
-              <Image
-                key={slide.src}
-                src={slide.src}
-                alt={slide.alt}
-                fill
-                priority={slideIndex === 0}
-                sizes="(max-width: 1024px) 100vw, 620px"
-                className={`object-cover transition-opacity duration-1000 ease-in-out ${
-                  slideIndex === index ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            ))}
-            <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-white/92 p-5 backdrop-blur">
-              <p className="text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-blue)]">
-                Featured Work
-              </p>
-              <p className="mt-2 text-2xl font-black tracking-tight text-[var(--brand-ink)]">
-                Games, VR worlds, exhibitions
-              </p>
-            </div>
-          </div>
+          <Image
+            src={current.src}
+            alt={current.alt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
         </motion.div>
+      </AnimatePresence>
+
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-950/72 via-blue-950/30 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-blue-950/70 to-transparent" />
+
+      <div className="relative z-10 flex min-h-[calc(100vh-4rem)] flex-col justify-end px-5 pb-10 pt-20 lg:min-h-screen lg:px-12 lg:pb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-5xl text-white"
+        >
+          <p className="mb-5 font-mono text-xs font-black uppercase tracking-[0.34em] text-white/75">
+            nu_digital / digital creation project
+          </p>
+          <h1 className="editorial-title max-w-4xl font-black uppercase">
+            Playable
+            <br />
+            digital
+            <br />
+            works
+          </h1>
+          <p className="mt-7 max-w-xl text-base font-bold leading-8 text-white/82 md:text-lg">
+            ゲーム、VRChatワールド、3D、Web、映像、サウンドを横断して、触って遊べるデジタル創作をつくっています。
+          </p>
+        </motion.div>
+
+        <div className="mt-10 grid max-w-3xl border-y border-white/35 text-white md:grid-cols-3">
+          {heroLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="border-white/35 px-5 py-4 text-sm font-black tracking-[0.22em] transition hover:bg-white hover:text-[var(--brand-blue)] md:border-r md:last:border-r-0"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="absolute bottom-8 right-6 z-10 hidden items-center gap-2 lg:flex">
+        {heroSlides.map((slide, slideIndex) => (
+          <button
+            key={slide.src}
+            type="button"
+            aria-label={`キービジュアル ${slideIndex + 1}`}
+            onClick={() => setIndex(slideIndex)}
+            className={`h-[3px] w-10 transition ${
+              index === slideIndex ? "bg-white" : "bg-white/35"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );

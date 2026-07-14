@@ -5,8 +5,8 @@
   --brand-blue: #004aad;
   --brand-white: #ffffff;
   --brand-ink: #071b3f;
-  --brand-pale: #f4f8ff;
-  --brand-line: #dbe7ff;
+  --brand-pale: #f7f8fb;
+  --brand-line: #d9e2f4;
   --background: var(--brand-pale);
   --foreground: var(--brand-ink);
 }
@@ -17,13 +17,21 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    linear-gradient(180deg, rgba(0, 74, 173, 0.08), transparent 420px),
-    var(--background);
+  background: var(--background);
   color: var(--foreground);
   font-family:
     Inter, "Noto Sans JP", "Hiragino Sans", "Yu Gothic", Arial, Helvetica,
     sans-serif;
+}
+
+.site-main {
+  min-height: 100vh;
+}
+
+@media (min-width: 1024px) {
+  .site-main {
+    padding-left: 104px;
+  }
 }
 
 ::selection {
@@ -42,8 +50,14 @@ body {
   }
 
   .section-shell {
-    width: min(1120px, calc(100% - 2rem));
+    width: min(1160px, calc(100% - 2rem));
     margin-inline: auto;
+  }
+
+  .editorial-title {
+    font-size: clamp(2.5rem, 7vw, 7rem);
+    line-height: 0.88;
+    letter-spacing: 0;
   }
 }
 

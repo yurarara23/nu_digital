@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
 import type { ContentMeta } from "@/lib/markdown";
 
 type ContentCardProps = ContentMeta & {
@@ -12,7 +11,6 @@ export default function ContentCard({
   title,
   image,
   slug,
-  author,
   date,
   category,
   excerpt,
@@ -20,47 +18,56 @@ export default function ContentCard({
 }: ContentCardProps) {
   const href = `/${collection}/${slug}`;
 
+  if (compact) {
+    return (
+      <Link
+        href={href}
+        className="group grid grid-cols-[92px_1fr] gap-4 border-b border-slate-200 py-4 transition hover:border-[var(--brand-blue)]"
+      >
+        <div className="relative aspect-square overflow-hidden bg-slate-100">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="92px"
+            className="object-cover transition duration-500 group-hover:scale-105"
+          />
+        </div>
+        <div className="min-w-0">
+          <div className="mb-2 flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">
+            <time dateTime={date}>{date}</time>
+            <span>{category}</span>
+          </div>
+          <h3 className="line-clamp-2 text-base font-black leading-snug text-[var(--brand-ink)] group-hover:text-[var(--brand-blue)]">
+            {title}
+          </h3>
+        </div>
+      </Link>
+    );
+  }
+
   return (
-    <Link
-      href={href}
-      className="group grid h-full overflow-hidden rounded-[1.75rem] border border-blue-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-[var(--brand-blue)] hover:shadow-xl hover:shadow-blue-900/10"
-    >
-      <div className={`relative overflow-hidden ${compact ? "h-40" : "h-56"}`}>
+    <Link href={href} className="group block">
+      <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
         <Image
           src={image}
           alt={title}
           fill
-          sizes="(max-width: 768px) 100vw, 420px"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 520px"
+          className="object-cover transition duration-700 group-hover:scale-105"
         />
-        <div className="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-bold text-[var(--brand-blue)] shadow-sm">
-          {category}
-        </div>
       </div>
-
-      <div className="flex flex-col gap-4 p-6">
-        <div className="flex items-center justify-between gap-4 text-xs font-bold uppercase tracking-[0.18em] text-blue-900/55">
-          <span>{collection}</span>
+      <div className="border-b border-slate-200 bg-white py-5">
+        <div className="mb-3 flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">
           <time dateTime={date}>{date}</time>
+          <span>{category}</span>
         </div>
-
-        <div className="space-y-3">
-          <h3 className="line-clamp-2 text-xl font-black leading-snug tracking-tight text-[var(--brand-ink)]">
-            {title}
-          </h3>
-          {!compact && (
-            <p className="line-clamp-3 text-sm leading-7 text-slate-600">
-              {excerpt}
-            </p>
-          )}
-        </div>
-
-        <div className="mt-auto flex items-center justify-between border-t border-blue-50 pt-4 text-sm">
-          <span className="font-bold text-slate-500">{author}</span>
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--brand-blue)] text-white transition group-hover:translate-x-1">
-            <FaArrowRight aria-hidden size={14} />
-          </span>
-        </div>
+        <h3 className="text-2xl font-black leading-tight text-[var(--brand-ink)] group-hover:text-[var(--brand-blue)]">
+          {title}
+        </h3>
+        <p className="mt-3 line-clamp-2 text-sm leading-7 text-slate-600">
+          {excerpt}
+        </p>
       </div>
     </Link>
   );

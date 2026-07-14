@@ -6,14 +6,6 @@ export const siteConfig = {
   ogImage: "/ogp/member.png",
 };
 
-export const brand = {
-  blue: "#004aad",
-  white: "#ffffff",
-  ink: "#071b3f",
-  pale: "#f4f8ff",
-  line: "#dbe7ff",
-};
-
 export const navItems = [
   { name: "Home", href: "/" },
   { name: "News", href: "/news" },
@@ -55,21 +47,6 @@ export const heroSlides = [
   },
 ];
 
-export const homeFeatureTiles = [
-  {
-    title: "Game / VR",
-    description: "遊べる体験、VRChatワールド、インタラクティブな展示を制作します。",
-  },
-  {
-    title: "Creative Tech",
-    description: "3D、Web、映像、サウンドを横断して作品の形を探ります。",
-  },
-  {
-    title: "Community",
-    description: "勉強会、展示、制作会を通してメンバーの創作を育てます。",
-  },
-];
-
 export const memberImages = [
   "member_alma.jpg",
   "member_ff.jpg",
@@ -103,7 +80,7 @@ export const homeCopy = {
   about:
     "nu_digitalは、VRChat向けのワールドやゲーム制作をはじめ、3Dモデル制作、Web開発、映像、サウンドなど、デジタル創作に特化したプロジェクト団体です。",
   project:
-    "メンバーそれぞれの得意分野を持ち寄り、ゲーム制作、VRChatワールド、モデリング、デザイン、サウンド、Web開発など幅広い制作活動に取り組んでいます。技術書制作、イベント企画、広報、展示ブース制作、団体運営など、リアルとデジタルの両面から創作を広げています。",
+    "ゲーム制作、VRChatワールド、モデリング、デザイン、サウンド、Web開発など幅広い制作活動に取り組んでいます。展示、イベント、技術発信、団体運営まで、リアルとデジタルの両面から創作を広げています。",
 };
 
 export const homeLinks = {

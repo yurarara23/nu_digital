@@ -8,9 +8,9 @@ type ButtonLinkProps = {
 
 const variants = {
   brand:
-    "bg-[var(--brand-blue)] text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-900/15",
+    "bg-[var(--brand-blue)] text-white hover:bg-[#003a88]",
   light:
-    "bg-white text-[var(--brand-blue)] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/15",
+    "bg-white text-[var(--brand-blue)] hover:bg-slate-100",
 };
 
 function isInternalHref(href: string) {
@@ -22,7 +22,7 @@ export default function ButtonLink({
   children,
   variant = "brand",
 }: ButtonLinkProps) {
-  const className = `inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-black transition ${variants[variant]}`;
+  const className = `inline-flex items-center justify-center px-7 py-3 text-sm font-black uppercase tracking-[0.12em] transition ${variants[variant]}`;
 
   if (isInternalHref(href)) {
     return (

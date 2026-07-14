@@ -2,28 +2,38 @@ import { homeCopy, homeLinks, projectImages } from "@/data/site";
 import MotionReveal from "@/components/motion/MotionReveal";
 import ButtonLink from "@/components/ui/ButtonLink";
 import ImageCarousel from "@/components/ui/ImageCarousel";
-import SectionHeader from "@/components/ui/SectionHeader";
 import YouTubeEmbed from "@/components/ui/YouTubeEmbed";
 
 export default function ProjectSection() {
   return (
-    <section className="py-16">
+    <section className="bg-[var(--brand-blue)] py-16 text-white lg:py-24">
       <MotionReveal className="section-shell">
-        <div className="rounded-[2.5rem] bg-[var(--brand-blue)] p-6 text-white md:p-10">
-          <SectionHeader title="Project" description={homeCopy.project} tone="dark" />
+        <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr]">
+          <div>
+            <p className="font-mono text-xs font-black uppercase tracking-[0.3em] text-white/65">
+              Products
+            </p>
+            <h2 className="mt-3 text-5xl font-black uppercase leading-none tracking-tight md:text-6xl">
+              Works &
+              <br />
+              projects
+            </h2>
+            <p className="mt-7 text-base font-bold leading-8 text-white/78">
+              {homeCopy.project}
+            </p>
 
-          <div className="mt-10">
-            <ImageCarousel images={projectImages} />
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col">
+              {homeLinks.project.map((link) => (
+                <ButtonLink key={link.href} href={link.href} variant="light">
+                  {link.label}
+                </ButtonLink>
+              ))}
+            </div>
           </div>
 
-          <YouTubeEmbed videoId="HHPRAg5ijXE" title="nu_digital Project Movie" />
-
-          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-            {homeLinks.project.map((link) => (
-              <ButtonLink key={link.href} href={link.href} variant="light">
-                {link.label}
-              </ButtonLink>
-            ))}
+          <div>
+            <ImageCarousel images={projectImages} />
+            <YouTubeEmbed videoId="HHPRAg5ijXE" title="nu_digital Project Movie" />
           </div>
         </div>
       </MotionReveal>

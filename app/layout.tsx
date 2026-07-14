@@ -43,8 +43,10 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <Header />
-        <PageTransition>{children}</PageTransition>
-        <Footer />
+        <div className="site-main">
+          <PageTransition>{children}</PageTransition>
+          <Footer />
+        </div>
       </body>
     </html>
   );

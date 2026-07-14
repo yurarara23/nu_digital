@@ -30,7 +30,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
 
   return (
     <div className="group relative mx-auto w-full max-w-5xl">
-      <div className="relative aspect-video overflow-hidden rounded-[2rem] bg-blue-50 shadow-xl shadow-blue-950/10">
+      <div className="relative aspect-video overflow-hidden bg-blue-50 shadow-xl shadow-blue-950/10">
         <div
           className="flex h-full transition-transform duration-500 ease-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -53,7 +53,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
           type="button"
           onClick={prevSlide}
           aria-label="前の画像へ"
-          className="absolute left-4 top-1/2 z-10 rounded-full bg-white/90 p-3 text-[var(--brand-blue)] shadow-sm transition hover:bg-white md:opacity-0 md:group-hover:opacity-100"
+          className="absolute left-4 top-1/2 z-10 bg-white/90 p-3 text-[var(--brand-blue)] shadow-sm transition hover:bg-white md:opacity-0 md:group-hover:opacity-100"
         >
           <FaChevronLeft aria-hidden size={18} />
         </button>
@@ -62,7 +62,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
           type="button"
           onClick={nextSlide}
           aria-label="次の画像へ"
-          className="absolute right-4 top-1/2 z-10 rounded-full bg-white/90 p-3 text-[var(--brand-blue)] shadow-sm transition hover:bg-white md:opacity-0 md:group-hover:opacity-100"
+          className="absolute right-4 top-1/2 z-10 bg-white/90 p-3 text-[var(--brand-blue)] shadow-sm transition hover:bg-white md:opacity-0 md:group-hover:opacity-100"
         >
           <FaChevronRight aria-hidden size={18} />
         </button>
